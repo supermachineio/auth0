@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 
 module Auth0.Types where
-  
+
 --------------------------------------------------------------------------------
 import Data.Aeson
 import Data.ByteString (ByteString)
@@ -22,7 +22,7 @@ type AccessToken = Tagged AccessTokenTag Text
 mkAccessToken :: Text -> AccessToken
 mkAccessToken = Tagged
 
-instance ToHttpApiData AccessToken where
+instance {-# OVERLAPPING #-} ToHttpApiData AccessToken where
   toUrlPiece = untag
 
 data ClientIdTag
@@ -31,7 +31,7 @@ type ClientId = Tagged ClientIdTag Text
 mkClientId :: Text -> ClientId
 mkClientId = Tagged
 
-instance ToHttpApiData ClientId where
+instance {-# OVERLAPPING #-} ToHttpApiData ClientId where
   toUrlPiece = untag
 
 data ClientSecretTag

@@ -3,3 +3,4 @@ dist
 dist-newstyle
 .env
 .ghc.environment.*
+.stack-work
